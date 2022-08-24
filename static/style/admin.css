@@ -1,0 +1,93 @@
+
+header .logo{
+    margin-left: 100px;
+}
+
+.admin-wrapper{
+    display: flex;
+    /* min-height: calc(100% - 66px); */
+}
+
+.admin-wrapper .left-menu{
+    flex: 2;
+    /* height: 100%; */
+    background: #2e2e4e;
+}
+
+.admin-wrapper .left-menu ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+}
+
+.admin-wrapper .left-menu ul li a{
+    padding: 18px;
+    display: block;
+    border-bottom: 1px solid #292947;
+}
+
+.admin-wrapper .left-menu ul li a:hover{
+    background: #292947;
+}
+
+.admin-wrapper .admin-content{
+    flex: 8;
+    height: 100%;
+    padding: 40px 100px;
+    overflow-y: scroll;
+}
+
+.admin-content .page-title{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #292947;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+
+th, td{
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.edit{
+    color: green;
+}
+.delete{
+    color: red;
+}
+.bt-link{
+    color: blue;
+    border: 0px;
+}
+
+.bt-link:hover{
+    color: green;
+    border: 0px;
+    text-decoration: underline;
+}
+
+.bt-link:disabled{
+    text-decoration: none;
+    color: #000;    
+}
+.unpublish{
+    color: brown;
+}
+
+.edit:hover, .delete:hover, .publish, .unpublish:hover{
+    text-decoration: underline;
+}
+
+form div{
+    margin-bottom: 16px;
+}
+.alert-left{
+    float: right;
+}

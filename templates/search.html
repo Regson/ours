@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+
+<h2>Searched Information</h2>
+<p>You searched for: <em>{{ searched }}</em></p><br>
+
+{% if posts %}
+    {% for post in posts %}
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <h3>{{ post.id }}. <a href="{{ url_for('fullpost', id = post.id)}}">{{ post.title }}</a></h3>
+        <h5>By: {{ post.author.username }}</h5>
+        <p>{{ post.content | safe}}</p>
+        <a href="{{ url_for('fullpost', id = post.id)}}" class='btn btn-dark btn-sm'>read more</a>
+        {% if post.poster_id == current_user.id %}
+        <a href="{{ url_for('edit_post', id = post.id)}}" class='btn btn-dark btn-sm'>Edit Post</a>
+        <a href="{{ url_for('delete_post', id = post.id)}}" class='btn btn-danger btn-sm'>Delete Post</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Sorry, <strong>{{ searched }}</strong> is not found!</p>
+{% endif %}
+
+
+{% endblock %}

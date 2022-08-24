@@ -1,0 +1,47 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+
+            <div class="content">
+                <h2 class="page-title">Edit Post</h2>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div>
+                        {{ form.title.label(class="form-label") }}
+                        {{ form.title(class="input-text") }}
+                    </div>
+                    <div>
+                        {{ form.content.label(class="form-label") }}
+                        {{ form.content(class="form-control", rows="10") }}
+                    </div>
+                    <div>
+                        {{ form.slug.label(class="form-label") }}
+                        {{ form.slug(class="input-text") }}
+                    </div>
+                    <div>
+                        {{ form.post_image.label(class="form-label") }}
+                        {{ form.post_image(class="input-text")}}
+                    </div>
+                    <!-- TO DO  -->
+                    <div>
+                        <label>Topics</label>
+                        <select name="topics" class="input-text">
+                            <option value="Programming">Programming</option>
+                            <option value="Food">Food</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Politics">Politics</option>
+                        </select>
+                    </div>
+                    <div>
+                        {{ form.submit(class="btn btn-big", value="Save") }} 
+                        {{ form.submit(class="btn btn-big", value="Preview") }} 
+                        {{ form.submit(class="btn btn-big", value="Update/Publish") }}
+                    </div>
+                </form>
+            </div>
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='content') }}
+
+{% endblock %}

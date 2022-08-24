@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0" nonce="v65s5xhD"></script>
+
+    <div class="page-container">
+        <!--  Page-wrapper  -->
+        <div class="page-wrapper">
+            <!-- Contents -->
+            <div class="main-content f-clear">
+                <div class="content-wrapper">
+                    <div class="recent-post full-post">
+                        <h1 class="post-title">{{post.title}}</h1>
+                        <div class="post-content">
+                            <p>{{post.content | safe}}</p>
+                        </div><br><br>
+                        <!-- about author -->
+                        <div class="">
+                            <div class="about-author">
+                                {% if post.author.profile_pic%}
+                                <img src="{{ url_for('static', filename='images/profile/' + post.author.profile_pic)}}" alt="profile picture" width="70px" height="70px">
+                                {%else%}
+                                <img src="{{ url_for('static', filename='images/profile/default_profile.jpg')}}" alt="profile picture" width="70px" height="70px">
+                                {% endif %}
+                            </div>
+                            <div class="author-info">
+                                <h4>{{post.author.name}}</h4>
+                                <p>{{post.author.about_author | safe | truncate(28, true, "")}}</p>
+                                <a href="{{ url_for('about_author', author=post.author.author_name | replace(' ', '-'))}}" class="btn">Read More</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="side-bar">
+                    <div class="fb-page fbk-page" data-href="https://web.facebook.com/OursTechnologies-543436509434178" data-tabs="" data-width="450" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/OursTechnologies-543436509434178" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/OursTechnologies-543436509434178">OursTechnologies</a></blockquote></div>
+                    <section class="popular">
+                        <!-- <div class="fb-page" data-href="https://web.facebook.com/OursTechnologies-543436509434178" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/OursTechnologies-543436509434178" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/OursTechnologies-543436509434178">OursTechnologies</a></blockquote></div><br> -->
+                        <h3 class="section-title">Popular</h3>
+
+                        <div class="post f-clear">
+                            <img src="../static/images/img3.jpg" alt="">
+                            <a href="#" class="title"><h4>python for kids</h4></a>
+                        </div>
+                        <div class="post f-clear">
+                            <img src="../static/images/img4.jpg" alt="">
+                            <a href="#" class="title"><h4>python for kids</h4></a>
+                        </div>
+                        <div class="post f-clear">
+                            <img src="../static/images/img3.jpg" alt="">
+                            <a href="#" class="title"><h4>python for kids</h4></a>
+                        </div>
+                    </section>
+                    <section class="topics">
+                        <h3 class="section-title">Topics</h3>
+                        <ul>
+                            <li><a href="#">Programming</a></li>
+                            <li><a href="#">Food</a></li>
+                            <li><a href="#">Politics</a></li>
+                            <li><a href="#">Movies</a></li>
+                            <li><a href="#">Fashion</a></li>
+                            <li><a href="#">Religion</a></li>
+                            <li><a href="#">Trending Gist</a></li>
+                            <li><a href="#">Make-up</a></li>
+                            <li><a href="#">Music</a></li>
+                            <li><a href="#">Travels/Tourism</a></li>
+                            <li><a href="#">Event</a></li>
+                        </ul>
+                    </section>
+            
+                </div>
+            </div>
+            <!-- End Contents -->
+        </div>
+    </div>
+
+{% endblock %}
+    

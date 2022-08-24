@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+    <div class="auth-content">
+        <form method="POST">
+            <h2 class="form-title">Login</h2>
+            {{ form.hidden_tag() }}
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="input-text") }} <br>
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="input-text") }} <br>
+            {{ form.submit(class="btn btn-dark") }}
+        </form>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    <div class="page-container">
+        <!--  Page-wrapper  -->
+        <div class="page-wrapper">
+            <!-- post slidder -->
+                <div class="post-slider">
+                    <h1 class="slider-title">Trending Posts</h1>
+                    <i class="fas fa-chevron-left prev"></i>
+                    <i class="fas fa-chevron-right next"></i>
+                            <div class="post-wrapper">
+                                {% for posts in blog_views %}
+                                {% if posts.publish==1 %}
+                                <div class="post">
+                                    {% if posts.post_image %}
+                                    <img src="{{ url_for('static', filename='post_images/' + posts.post_image)}}" alt="author image" class="slider-image">
+                                    {% else %}
+                                    <img src="{{ url_for('static', filename='images/img3.jpg')}}" alt="author image" class="slider-image">
+                                    {% endif %}
+                                    <div class="post-info">
+                                        <h4><a href="{{ url_for('fullpost', title=posts.title | replace(' ','-'))}}">{{ posts.title}}</a></h4>
+                                        <i class="far fa-user"> {{posts.author.username}}</i>
+                                        &nbsp;
+                                        <i class="far fa-calendar"> {{posts.date_created.strftime("%B %d, %Y")}}</i>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                </div>
+            <!-- post slidder -->
+
+        </div>
+        <!--// End page-wrapper-->
+
+        <!-- Contents -->
+        <div class="main-content f-clear">
+            
+            <div class="recent-post">
+                <h1 class="recent-title">Recent Posts</h1>
+                {% for posts in blog_posts %}
+                {% if posts.publish==1 %}
+                <div class="post f-clear">
+                    {% if posts.post_image %}
+                    <img src="{{ url_for('static', filename='post_images/' + posts.post_image)}}" alt="" class="post-image">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/img3.jpg')}}" alt="" class="post-image">
+                    {% endif %}
+                    <div class="post-preview">
+                        <h2 class="post-title"><a href="{{ url_for('fullpost', title=posts.title | replace(' ','-'))}}">{{ posts.title }}</a> 
+                        </h2>
+                        <i class="far fa-user"> {{posts.author.username}}</i>
+                        &nbsp;
+                        <i class="far fa-calendar"> {{posts.date_created.strftime("%B %d, %Y")}}</i> <span>({{posts.popular_view }} views )</span>
+                        <p class="preview-text">
+                            {{ posts.content | safe | truncate(200, true, "...")}}
+                        </p>
+                        <a href="{{ url_for('fullpost', title=posts.title | replace(' ','-'))}}" class="btn read-more">Read More</a>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="side-bar">
+                <section class="search">
+                    <h3 class="section-title">Search</h3>
+                    <form class="search-term f-clear" method="POST" action="{{ url_for('search') }}">
+                        {{ form.hidden_tag() }}
+                        <input type="text" name="searched" class="" placeholder="Search...">
+                        <button type="submit"><i class="fas fa-search search-icon"></i></button>
+                    </form>
+                </section>
+                <section class="topics">
+                    <h3 class="section-title">Topics</h3>
+                    <ul>
+                        <li><a href="#">Programming</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Politics</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Religion</a></li>
+                        <li><a href="#">Trending Gist</a></li>
+                        <li><a href="#">Make-up</a></li>
+                        <li><a href="#">Music</a></li>
+                        <li><a href="#">Travels/Tourism</a></li>
+                        <li><a href="#">Event</a></li>
+                    </ul>
+                </section>
+        
+            </div>
+        </div>
+        <!-- End Contents -->
+    </div>
+
+    {% endblock %}

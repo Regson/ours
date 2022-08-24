@@ -1,0 +1,58 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}Manage posts{% endblock %}
+
+    {% block content %}
+        <div class="content">
+            <h2 class="page-title">Manage Posts</h2>
+
+            <table>
+                <thead>
+                    <th>SN</th>
+                    <th>Title</th>
+                    <!-- <th>Author</th> -->
+                    <th colspan="4">Action</th>
+                </thead>
+                {% for posts in blog_posts.items %}
+                    {% if posts.poster_id == current_user.id %}
+                        <tbody>
+                            <tr>
+                                <td>{{ (page-1) * blog_posts.per_page + loop.index }} </td>
+                                <td>{{ posts.title }}</td>
+                                <td><a href="{{ url_for('edit_post', id=posts.id)}}" class="edit">edit</a></td>
+                                <td><a href="{{ url_for('delete_post', id=posts.id)}}" class="delete">delete</a></td>
+                                {% if posts.publish !=1 %}
+                                <td><form action="/posts/publish-post/{{posts.id}}" method="POST">
+                                    <input type="submit" class="bt-link" value="publish">
+                                    </form>
+                                </td>
+                                <td><form action="/posts/unpublish-post/{{posts.id}}" method="POST">
+                                    <input type="submit" name="unpublish" class="bt-link" value="unpublish" disabled>
+                                    </form>
+                                </td>
+                                {% else %}
+                                <td><form action="/posts/publish-post/{{posts.id}}" method="POST">
+                                    <input type="submit" class="bt-link" value="publish" disabled>
+                                    </form>
+                                </td>
+                                <td><form action="/posts/unpublish-post/{{posts.id}}" method="POST">
+                                    <input type="submit" name="unpublish" class="bt-link" value="unpublish">
+                                    </form>
+                                </td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    {% endif %}
+                {% endfor %}
+            </table><br>
+            {% if blog_posts.has_prev %}
+                        <a href="{{ url_for('manage_post', page=blog_posts.prev_num) }}">&lt;&lt; Newer posts</a>
+                {% else %}
+                        &lt;&lt; Newer posts
+                {% endif %} |
+                {% if blog_posts.has_next %}
+                        <a href="{{ url_for('manage_post', page=blog_posts.next_num) }}">Older posts &gt;&gt;</a>
+                {% else %}
+                        Older posts &gt;&gt;
+                {% endif %}
+        </div>
+    {% endblock %}

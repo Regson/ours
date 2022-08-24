@@ -1,0 +1,33 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}User update{% endblock %}
+
+{% block content %}
+
+            <div class="content">
+                <h2 class="page-title">Profile Update</h2>
+
+                {% if current_user.id == user_update.id %}
+                    <form action="/update/{{user_update.id}}" method="POST" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="input-text", value=user_update.author_name) }} <br>
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="input-text", value=user_update.email) }} <br>
+                        {{ form.favorite_color.label(class="form-label") }}
+                        {{ form.favorite_color(class="input-text", value=user_update.favorite_color) }} <br>
+                        {{ form.about_author.label(class="form-label") }}
+                        <textarea name="about_author" class="input-text">{{ user_update.about_author }}</textarea> <br>
+                        {{ form.profile_pic.label(class="form-label") }}
+                        {{ form.profile_pic(class="input-text", value=user_update.profile_pic) }} <br>
+                        {{ form.submit(class="btn", value="Update") }} <a class="btn btn-danger" href="{{ url_for('delete', id=user_update.id) }}">Delete</a><br><br>
+                    </form>
+
+                {% else %}
+
+                    <h3>Access denied!</h3>
+                    <p>Sorry you cannot update this user profile</p>
+                {% endif %}
+                    <br><br>
+            
+{% endblock %}
+

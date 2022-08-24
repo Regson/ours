@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+        
+    <div class="auth-content">
+        <form method="POST">
+            <h2 class="form-title">Register</h2>
+            {{ form.hidden_tag() }}
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="input-text") }} <br>
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="input-text") }} <br>
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="input-text") }} <br>
+            {{ form.favorite_color.label(class="form-label") }}
+            {{ form.favorite_color(class="input-text") }} <br>
+            {{ form.pw_hash.label(class="form-label") }}
+            {{ form.pw_hash(class="input-text") }} <br>
+            {{ form.confirm_pw.label(class="form-label") }}
+            {{ form.confirm_pw(class="input-text") }} <br>
+            {{ form.submit(class="btn btn-big") }}
+            <p>already have an account? <a href="{{url_for('login')}}" class="">Login</a></p>
+        </form>
+    </div>
+    
+{% endblock %}

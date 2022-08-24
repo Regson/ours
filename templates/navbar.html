@@ -1,0 +1,61 @@
+<header>
+    <div class="logo">
+        <a href="{{ url_for('index')}}"><h1 class="logo_text"><span>Ours</span>Tech</h1></a>
+    </div>
+    <i class="fa fa-bars toggle_menu"></i>
+    <ul class="nav">
+        <li><a href="{{ url_for('index')}}">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        {% if current_user.is_authenticated %}
+        <!-- <li>
+            <a href="#">
+                <i class="bi bi-person-circle"></i>
+                {{current_user.username}}
+                <i class="fa fa-chevron-down dropdown"></i>
+            </a>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="{{ url_for('logout')}}" class="logout">Logout</a></li>
+            </ul>
+        </li> -->
+
+        <li class="nav-item">
+            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button"  aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+                {{current_user.username}}
+            </a>
+            <ul class="" aria-labelledby="navbarDropdown">
+              <li><a class="" href="{{ url_for('dashboard')}}">Dashboard</a></li>
+              <li><a class="" href="{{ url_for('add_posts')}}">New Post</a></li>
+              <hr style="height:2px;border-width: 0;color: #fff;background-color:#fff">
+              <li><a class="logout" href="{{ url_for('logout')}}">logout</a></li>
+            </ul>
+          </li>
+
+        {% else %}
+        <li class="nav-item">
+            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button"  aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+                New
+            </a>
+            <ul class="" aria-labelledby="navbarDropdown">
+              <li><a class="" href="{{ url_for('login')}}">Login</a></li>
+              <li><a class="" href="{{ url_for('add_user')}}">Sign up</a></li>
+            </ul>
+          </li>
+        {% endif %}
+    </ul>
+</header>
+
+<!-- <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </li> -->
