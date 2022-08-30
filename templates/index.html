@@ -55,7 +55,7 @@
                         &nbsp;
                         <i class="far fa-calendar"> {{posts.date_created.strftime("%B %d, %Y")}}</i> <span>({{posts.popular_view }} views )</span>
                         <p class="preview-text">
-                            {{ posts.content | safe | truncate(200, true, "...")}}
+                            {{ posts.content | safe | truncate(150, true, "...")}}
                         </p>
                         <a href="{{ url_for('fullpost', title=posts.title | replace(' ','-'))}}" class="btn read-more">Read More</a>
                     </div>

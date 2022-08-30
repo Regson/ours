@@ -195,14 +195,6 @@ header .logo_text{
     overflow: hidden;
 }
 
-.post-slider .author-wrapper{
-    background-color: #292947;
-    width: 100%;
-    height: 300px;
-    padding: 10px 0px 10px 0px;
-    margin: 0px auto;
-    overflow: hidden;
-}
 .post-slider .post-wrapper .post{
     display: inline-block;
     background: white;
@@ -549,16 +541,6 @@ button:hover, .card a:hover {
 
 
 /* MEDIA QUERIES */
-@media only screen and (min-width: 29.8125rem /* 477px */) {
-    .ft-main{
-        justify-content: space-evenly;
-    }
-}
-@media only screen and (min-width: 77.5rem /* 1240px */) {
-    .ft-main{
-        justify-content: space-evenly;
-    }
-}
 
 
 @media only screen and (max-width: 435px){
@@ -668,6 +650,7 @@ button:hover, .card a:hover {
         right: 20px;
         top: 20px;
         font-size: 1.5em;
+       
     }
 
     header .logo{
@@ -678,6 +661,8 @@ button:hover, .card a:hover {
         float: left;
     }
     .post-slider{
+        display: flex;
+        flex-direction: column;
         position: relative;
     }
     .post-slider .prev{
@@ -700,7 +685,7 @@ button:hover, .card a:hover {
         overflow: auto;
     }
     .post-slider .post-wrapper .post .post-info{
-        height: 55%;
+        height: auto;
         margin: auto;
     }
     .post-slider .post-wrapper{
