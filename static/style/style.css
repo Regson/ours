@@ -66,62 +66,19 @@ a{
     border: 2px solid #0d6595;
 }
 
-header * {
-    color: #fff
-}
-header{
-    height: 66px;
+.header-nav{
+    /* height: 66px; */
     background: #292947;
 }
 
-header .logo{
-    display: flex;
-    align-items: center;
-    margin-left: 200px;
-    height: inherit;
-    float: left;
+.header-nav *{
+    color: #fff;
 }
 
-header ul{
-    float: right;
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
+.header-nav * :hover{
+    color: grey;
 }
 
-header ul li{
-    float: left;
-    position: relative;
-}
-
-header ul li ul{
-    position: absolute;
-    top: 66px;
-    right: 0px;
-    width: 180px;
-    display: none;
-    z-index: 88888;
-}
-
-header ul li a{
-    display: block;
-    padding: 21px;
-    font-size: 1em;
-    text-decoration: none;
-}
-
-header ul li ul li{
-    width: 100%;
-}
-
-header ul li:hover ul{
-    display: block;
-}
-
-header ul li ul li a{
-    padding: 10px;
-    background: #292947;
-}
 
 header ul li ul li a.logout{
     color: red !important;
@@ -143,19 +100,24 @@ header ul li a:focus{
     transition: 0.50s;
 }
 
-header .toggle_menu{
-    display: none;
-}
-header .logo_text span{
+
+.logo_text span{
     color: #0d6595;
 }
-header .logo_text{
+.logo_text{
     font-family: 'Candal', serif;
 }
 
-.dropdown{
-    font-size: 0.8em;
+.dropdown-nav{
+    font-size: 1em;
+    background: #292947;
 }
+
+.dropdown-nav a:hover{
+    background: #292947;
+    color: grey;
+}
+
 
 .page-container{
     min-height: 100%;
