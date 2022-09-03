@@ -118,6 +118,10 @@ header ul li a:focus{
     color: grey;
 }
 
+.my-toggle-bt{
+    color: #fff;
+}
+
 
 .page-container{
     min-height: 100%;
@@ -252,10 +256,13 @@ header ul li a:focus{
 }
 
 .author-pg {
+    background: #292947;
     color: #e0e0e0;
     padding-left: 15%;
+    padding-right: 10%;
     padding-top: 10px;
     height: 100%;
+    text-align: justify;
 }
 
 .author-pg h1,h2,h3,h4{
@@ -283,6 +290,7 @@ header ul li a:focus{
 .about-author-socials{
     font-size: 25px;
     margin-left: 10px;
+    margin-bottom: 20px;
 }
 
 .main-content .popular .post{
