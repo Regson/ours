@@ -1,2 +1,4 @@
 requirements_old.txt
 __pycache__
+.env
+instance
